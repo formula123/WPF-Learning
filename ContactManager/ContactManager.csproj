@@ -58,13 +58,20 @@
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Contact.cs" />
     <Compile Include="Model\ContactRepository.cs" />
+    <Compile Include="Model\IContactRepository.cs" />
     <Compile Include="Model\States.cs" />
     <Compile Include="Notifier.cs" />
+    <Compile Include="Presenters\ApplicationPresenter.cs" />
+    <Compile Include="Presenters\EditContactPresenter.cs" />
+    <Compile Include="Presenters\PresenterBase.cs" />
     <Compile Include="UserControls\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SideBar.xaml.cs">
       <DependentUpon>SideBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditContactView.xaml.cs">
+      <DependentUpon>EditContactView.xaml</DependentUpon>
     </Compile>
     <Page Include="Shell.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +90,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\SideBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditContactView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -112,9 +123,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Presenters\" />
     <Folder Include="Resources\" />
-    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

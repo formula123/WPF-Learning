@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ContactManager.Model
 {
-    public class ContactRepository
+    public class ContactRepository : IContactRepository
     {
         private List<Contact> _contactStore;
         private readonly string _stateFile;
