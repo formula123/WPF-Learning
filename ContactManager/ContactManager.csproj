@@ -62,7 +62,9 @@
     <Compile Include="Model\States.cs" />
     <Compile Include="Notifier.cs" />
     <Compile Include="Presenters\ApplicationPresenter.cs" />
+    <Compile Include="Presenters\ContactListPresenter.cs" />
     <Compile Include="Presenters\EditContactPresenter.cs" />
+    <Compile Include="Presenters\PhoneConverter.cs" />
     <Compile Include="Presenters\PresenterBase.cs" />
     <Compile Include="UserControls\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
@@ -70,10 +72,17 @@
     <Compile Include="UserControls\SideBar.xaml.cs">
       <DependentUpon>SideBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ContactListView.xaml.cs">
+      <DependentUpon>ContactListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditContactView.xaml.cs">
       <DependentUpon>EditContactView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\ColorsAndBrushes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\DefaultStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -94,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\SideBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContactListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
