@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ContactManager.Presenters;
+using ContactManager.Model;
 
 namespace ContactManager.UserControls
 {
@@ -36,6 +37,13 @@ namespace ContactManager.UserControls
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Presenter.DisplayAllContacts();
+        }
+
+        private void OpenContact_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = e.OriginalSource as Button;
+            if (button != null)
+                Presenter.OpenContact(button.DataContext as Contact);
         }
     }
 }
