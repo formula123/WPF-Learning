@@ -6,15 +6,14 @@
              StartupUri="Shell.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <ObjectDataProvider x:Key="stateNames"
+                                MethodName="GetNames"
+                                ObjectType="{x:Type Model:States}" />            
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/ColorsAndBrushes.xaml" />
                 <ResourceDictionary Source="Resources/DefaultStyles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-            
-            <Presenters:PhoneConverter x:Key="phoneConverter" />
-            <ObjectDataProvider x:Key="stateNames"
-                                MethodName="GetNames"
-                                ObjectType="{x:Type Model:States}" />
+            </ResourceDictionary.MergedDictionaries>      
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
