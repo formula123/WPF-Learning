@@ -92,4 +92,15 @@
         <Setter Property="TextBlock.FontWeight"
                 Value="Bold" />
     </Style>
+    <Style x:Key="listBorder"
+           TargetType="{x:Type Border}">
+        <Setter Property="Background"
+                Value="White" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background"
+                        Value="Green" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

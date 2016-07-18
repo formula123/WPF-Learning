@@ -38,9 +38,9 @@
                             <Border BorderBrush="{StaticResource redBrush}"
                                             BorderThickness="2"
                                             CornerRadius="4"
-                                            Background="White"
                                             Margin="0 0 2 2"
-                                            Padding="3">
+                                            Padding="3"
+                                    Style="{StaticResource listBorder}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />

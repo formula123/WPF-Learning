@@ -2,6 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Presenters="clr-namespace:ContactManager.Presenters"
+             xmlns:Model="clr-namespace:ContactManager.Model"
              StartupUri="Shell.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -11,6 +12,9 @@
             </ResourceDictionary.MergedDictionaries>
             
             <Presenters:PhoneConverter x:Key="phoneConverter" />
+            <ObjectDataProvider x:Key="stateNames"
+                                MethodName="GetNames"
+                                ObjectType="{x:Type Model:States}" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
