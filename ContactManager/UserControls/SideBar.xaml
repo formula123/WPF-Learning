@@ -27,51 +27,8 @@
                           VerticalAlignment="Stretch"
                           BorderThickness="0"
                           ItemsSource="{Binding Source={StaticResource contactResource}}"
-                          ButtonBase.Click="OpenContact_Click">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Margin="2">
-                            <Border Margin="2 2 0 0"
-                                    CornerRadius="4"
-                                    Background="Gray"
-                                    Opacity=".5" />
-                            <Border BorderBrush="{StaticResource redBrush}"
-                                            BorderThickness="2"
-                                            CornerRadius="4"
-                                            Background="White"
-                                            Margin="0 0 2 2"
-                                            Padding="3">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Grid.ColumnSpan="2"
-                                               FontWeight="Bold"
-                                               Text="{Binding LookupName}" />
-                                    <TextBlock Grid.Row="1"
-                                               Text="   Office: " />
-                                    <TextBlock Grid.Row="1"
-                                               Grid.Column="1"
-                                               Text="{Binding Path=OfficePhone,
-                                        Converter={StaticResource phoneConverter}}" />
-                                   
-                                    <TextBlock Grid.Row="2"
-                                               Text="  Email: " />
-                                    <TextBlock Grid.Row="2"
-                                               Grid.Column="1"
-                                               Text="{Binding PrimaryEmail}" />
-                                </Grid>
-                            </Border>
-                            <Button Style="{StaticResource openButton}" />
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
+                          ButtonBase.Click="OpenContact_Click"
+                          ItemTemplate="{StaticResource listDataTemplate}">
             </ItemsControl>
         </ScrollViewer>
     </DockPanel>

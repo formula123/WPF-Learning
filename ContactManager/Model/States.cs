@@ -13,9 +13,9 @@ namespace ContactManager.Model
             _names.Add("Alababa");
             _names.Add("Alaska");
             _names.Add("Arizona");
-            _names.Add("zzl");
-            _names.Add("juan");
-            _names.Add("ruby");
+            _names.Add("Ganzhou");
+            _names.Add("SuZhou");
+            _names.Add("Dushuhu");
         }
 
         public static IList<string> GetNames()
