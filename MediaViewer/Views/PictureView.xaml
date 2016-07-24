@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="MediaViewer.Views.PictureView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:cm="clr-namespace:System.ComponentModel;assembly=WindowsBase">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="pictureSource"
+                              Source="{Binding Media}">
+                              <!--sort source by its name-->
+            <CollectionViewSource.SortDescriptions>
+                <cm:SortDescription PropertyName="Name" />
+            </CollectionViewSource.SortDescriptions>
+            <!--group source by its folder-->
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="Directory" />
+            </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>
+    </UserControl.Resources>
+    
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Auto">
+        <ItemsControl ItemsSource="{Binding Source={StaticResource pictureSource}}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding Thumbnail}"
+                           Width="75"
+                           Height="75"
+                           Margin="4">
+                        <Image.ToolTip>
+                            <StackPanel>
+                                <Image Source="{Binding Thumbnail}"
+                                       Width="400"
+                                       Height="400" />
+                                <TextBlock Text="{Binding Name}" />
+                            </StackPanel>
+                        </Image.ToolTip>
+                    </Image>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}" >
+                            <Setter Property="Margin"
+                                    Value="5" />
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </ItemsControl.GroupStyle>
+        </ItemsControl>
+    </ScrollViewer>
+</UserControl>

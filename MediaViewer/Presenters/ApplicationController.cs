@@ -19,7 +19,7 @@ namespace MediaViewer.Presenters
 
         public void ShowMenu()
         {
-
+            new MenuPresenter(this);
         }
 
         public void DisplayInShell(object view)
