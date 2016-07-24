@@ -32,12 +32,16 @@ namespace MediaViewer.Presenters
 
         public void ListenToMusic()
         {
-
+            Display<MusicView, Media>(
+                Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
+                "*.wma", "*.mp3");
         }
 
         public void WatchVideo()
         {
-
+            Display<VideoView, Media>(
+                _controller.RequestDirectoryFromUser(),
+                "*.wmv");
         }
 
         private void Display<View, MediaType>(

@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="MediaViewer.UserControls.MediaPlayer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             >
+    <DockPanel>
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="2"
+                    Content="Stop"
+                    Click="Stop_Click" />
+            <Button Grid.Column="3"
+                    Content="Play"
+                    Click="Play_Click" />
+            <ToggleButton Grid.Column="4"
+                          Content="Mute"
+                          IsChecked="{Binding ElementName=mediaElement, Path=IsMuted}" />
+            <Slider Grid.Column="5"
+                    Minimum="0"
+                    Maximum="1"
+                    Value="{Binding ElementName=mediaElement, Path=Volume}" />
+        </Grid>
+        <Slider x:Name="progressSlider"
+               DockPanel.Dock="Bottom"
+               Minimum="0"
+               LargeChange="1000"
+               PreviewMouseLeftButtonDown="progressSlider_PreviewMouseLeftButtonDown"
+               PreviewMouseLeftButtonUp="progressSlider_PreviewMouseLeftButtonUp" />
+        <MediaElement x:Name="mediaElement"
+                      DockPanel.Dock="Top"
+                      LoadedBehavior="Manual"
+                      MediaOpened="mediaElement_MediaOpened"
+                      MediaEnded="mediaElement_MediaEnded" />
+    </DockPanel>
+</UserControl>

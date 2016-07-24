@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="MediaViewer.Views.VideoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             xmlns:uc="clr-namespace:MediaViewer.UserControls"
+             mc:Ignorable="d" 
+             >
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="movieSource"
+                              Source="{Binding Media}">
+            <CollectionViewSource.SortDescriptions>
+                <cm:SortDescription PropertyName="Name" />
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+    </UserControl.Resources>
+    <DockPanel>
+        <Expander DockPanel.Dock="Left"
+                  ExpandDirection="Right"
+                  IsExpanded="True"
+                  BorderThickness="0 1 1 1"
+                  BorderBrush="Gray"
+                  Margin="0 2 0 0"
+                  Padding="2">
+            <Expander.Header>
+                <TextBlock Text="Movies"
+                           FontSize="14"
+                           FontWeight="Bold">
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="90" />
+                    </TextBlock.LayoutTransform>
+                </TextBlock>
+            </Expander.Header>
+            <ListBox x:Name="movieList"
+                     Width="175"
+                     BorderThickness="0"
+                     ItemsSource="{Binding Source={StaticResource movieSource}}"
+                     DisplayMemberPath="Name" />
+        </Expander>
+        <uc:MediaPlayer Media="{Binding ElementName=movieList, Path=SelectedItem}"
+                        Margin="4" />
+    </DockPanel>
+</UserControl>
