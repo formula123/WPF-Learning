@@ -1,0 +1,115 @@
+﻿<Window x:Class="MedicineBoxRecorder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ctrl="clr-namespace:Itenso.Windows.Controls.ListViewLayout;assembly=Itenso.Windows.Controls.ListViewLayout"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="药框录入" Height="600" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources\DefaultStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <DockPanel>
+        <ListView x:Name="infoList"
+                 ItemsSource="{Binding BoxStore}"
+                 DockPanel.Dock="Left"
+                 Width="400"
+                 ctrl:ListViewLayoutManager.Enabled="true"
+                  SelectedIndex="0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="药框编号"
+                                    DisplayMemberBinding="{Binding MachineID}"
+                                    ctrl:ProportionalColumn.Width="1"/>
+                    <GridViewColumn Header="ID卡编号"
+                                    DisplayMemberBinding="{Binding CardID}" 
+                                    ctrl:ProportionalColumn.Width="3"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid DockPanel.Dock="Right">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="药框编号："/>
+            <TextBox x:Name="macTbx" 
+                     Grid.Column="1"
+                     IsReadOnly="True"
+                     Text="{Binding ElementName=infoList, Path=SelectedItem.MachineID}"/>
+            <TextBlock Text="ID卡编号："
+                       Grid.Row="1" />
+            <TextBox x:Name="cardTbx"
+                     Grid.Column="1"
+                     Grid.Row="1" 
+                     
+                     Text="{Binding ElementName=infoList,Path=SelectedItem.CardID}"/>
+            <Button x:Name="refreshBtn"
+                    Click="refreshBtn_Click"
+                    Grid.Row="2" 
+                    Content="刷新"/>
+            <Button x:Name="saveBtn"
+                    Click="saveBtn_Click"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Content="保存" />
+            <Button x:Name="lLightBtn"
+                    Click="lLightBtn_Click"
+                    Grid.Row="3"
+                    Content="闪灯" />
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="3"
+                        Grid.Column="1">
+                <TextBlock Text="时间:" />
+                <xctk:IntegerUpDown Name="timeUpDown"
+                                    DefaultValue="3"
+                                    Watermark="3"
+                                    VerticalAlignment="Center"
+                                    MinHeight="30"
+                                    MinWidth="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="4"
+                        Grid.Column="0">
+                <TextBlock Text="颜色:" />
+                <ComboBox x:Name="colorCbx"
+                          SelectedIndex="0" 
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch"/>
+            </StackPanel>
+            <Button x:Name="colorSetBtn"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Content="设定颜色"
+                    Click="colorSetBtn_Click"/>
+            <CheckBox Grid.Row="5"
+                      Grid.ColumnSpan="2" 
+                      Content="显示已录入"
+                      VerticalAlignment="Center"
+                      x:Name="loadedCbx"
+                      Click="loadedCbx_Click"
+                      />
+            <Button x:Name="configBtn"
+                    Click="configBtn_Click"
+                    Grid.Row="6"
+                    Content="参数配置" />
+            <Button x:Name="exportBtn"
+                    Click="exportBtn_Click"
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    Content="导出数据" />
+        </Grid>
+    </DockPanel>
+</Window>

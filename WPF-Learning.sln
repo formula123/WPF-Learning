@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager", "ContactMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaViewer", "MediaViewer\MediaViewer.csproj", "{1FC35FF1-B6B8-4F27-B004-D062EBAB021E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicineBoxRecorder", "MedicineBoxRecorder\MedicineBoxRecorder.csproj", "{546B0ACD-3D8F-4EB7-AD18-BB084E971CB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,18 @@ Global
 		{1FC35FF1-B6B8-4F27-B004-D062EBAB021E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1FC35FF1-B6B8-4F27-B004-D062EBAB021E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1FC35FF1-B6B8-4F27-B004-D062EBAB021E}.Release|x86.ActiveCfg = Release|Any CPU
+		{546B0ACD-3D8F-4EB7-AD18-BB084E971CB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{546B0ACD-3D8F-4EB7-AD18-BB084E971CB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{546B0ACD-3D8F-4EB7-AD18-BB084E971CB9}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{546B0ACD-3D8F-4EB7-AD18-BB084E971CB9}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{546B0ACD-3D8F-4EB7-AD18-BB084E971CB9}.Debug|x86.ActiveCfg = Debug|x86
+		{546B0ACD-3D8F-4EB7-AD18-BB084E971CB9}.Debug|x86.Build.0 = Debug|x86
+		{546B0ACD-3D8F-4EB7-AD18-BB084E971CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{546B0ACD-3D8F-4EB7-AD18-BB084E971CB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{546B0ACD-3D8F-4EB7-AD18-BB084E971CB9}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{546B0ACD-3D8F-4EB7-AD18-BB084E971CB9}.Release|Mixed Platforms.Build.0 = Release|x86
+		{546B0ACD-3D8F-4EB7-AD18-BB084E971CB9}.Release|x86.ActiveCfg = Release|x86
+		{546B0ACD-3D8F-4EB7-AD18-BB084E971CB9}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

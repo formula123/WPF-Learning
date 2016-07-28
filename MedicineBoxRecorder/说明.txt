@@ -1,0 +1,3 @@
+引用额外类库：
+ListView layout Manager 地址：http://www.codeproject.com/Articles/25058/ListView-Layout-Manager
+Xceed.Wpf.Toolkit 地址：http://wpftoolkit.codeplex.com/wikipage?title=IntegerUpDown&referringTitle=NumericUpDown-derived%20controls

@@ -1,0 +1,83 @@
+﻿<Window x:Class="MedicineBoxRecorder.ConfigWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="配置" Height="320" Width="520">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources\DefaultStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <DockPanel>
+        <GroupBox Header="药框编号" 
+                  DockPanel.Dock="Top">
+            <Grid 
+                  Height="120">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="起始号:  "/>
+                    <TextBox x:Name="startTbx"
+                             Text="{Binding StartIdx}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1">
+                    <TextBlock Text="结束号: "/>
+                    <TextBox Name="endTbx" 
+                             Text="{Binding EndIdx}"/>
+                </StackPanel>
+                <Button Name="BoxSaveBtn"  
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Content="保存"
+                        Click="BoxSaveBtn_Click"/>
+            </Grid>
+        </GroupBox>
+        <Separator />
+        <GroupBox Header="设备串口"
+                  DockPanel.Dock="Bottom"
+                  >
+            <Grid
+                  Height="120">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="读卡器COM口： "/>
+                    <ComboBox Name="readerCbx"
+                              Text="{Binding ReaderCOM}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1">
+                    <TextBlock Text="结束符:"
+                               ToolTip="用于设定读卡器接收结束符"/>
+                    <TextBox x:Name="endStrTbx" 
+                             Text="{Binding EndStr}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1"
+                            Orientation="Horizontal">
+                    <TextBlock Text="药框COM口： "/>
+                    <ComboBox Name="boxerCbx"
+                              Text="{Binding BoxerCOM}"/>
+                </StackPanel>
+                <Button Name="devSaveBtn"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Content="保存"
+                        Click="devSaveBtn_Click"/>
+            </Grid>
+        </GroupBox>
+    </DockPanel>
+</Window>
