@@ -6,29 +6,109 @@
              mc:Ignorable="d" 
              >
     <DockPanel>
-        <Grid DockPanel.Dock="Bottom">
+        <Grid DockPanel.Dock="Bottom"
+              HorizontalAlignment="Center"
+              Width="400" Height="50"
+              Background="{StaticResource MediaControlPanelBackground}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="2"
-                    Content="Stop"
-                    Click="Stop_Click" />
-            <Button Grid.Column="3"
-                    Content="Play"
-                    Click="Play_Click" />
-            <ToggleButton Grid.Column="4"
-                          Content="Mute"
-                          IsChecked="{Binding ElementName=mediaElement, Path=IsMuted}" />
-            <Slider Grid.Column="5"
+            <Grid Grid.Column="1"
+                  HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button
+                        Click="Stop_Click">
+                    <Border Width="18"
+                            Height="20"
+                            Background="{StaticResource redRadial}"
+                            CornerRadius="1"
+                            BorderBrush="{StaticResource controlOutline}"
+                            BorderThickness="1">
+                        <Rectangle HorizontalAlignment="Center"
+                                   VerticalAlignment="Top"
+                                   Margin="0,1,0,0"
+                                   Width="15"
+                                   Height="10"
+                                   Fill="{StaticResource glossBrush}"
+                                   RadiusX="1"
+                                   RadiusY="1" />
+                    </Border>
+                </Button>
+                <Button Grid.Column="1"
+                        Click="Play_Click">
+                    <Grid Margin="4 0 0 0">
+                        <Polygon Fill="{StaticResource yellowGradient }"
+                                 Stroke="{StaticResource chromeOutline}"
+                                 Points="0,0 18, 10 0, 18" />
+                        <Canvas Visibility="Hidden">
+                            <Rectangle Height="18"
+                                       Fill="{StaticResource yellowGradient}"
+                                       Stroke="{StaticResource chromeOutline}"
+                                       Width="6" />
+                            <Rectangle Height="18"
+                                       Fill="{StaticResource yellowGradient}"
+                                       Stroke="{StaticResource chromeOutline}"
+                                       Width="6"
+                                       Canvas.Left="8" />
+                        </Canvas>
+                    </Grid>
+                </Button>
+                <ToggleButton Grid.Column="2"
+                              IsChecked="{Binding ElementName=mediaElement,Path=IsMuted}">
+                    <Canvas Width="20" Height="20">
+                        <!--speaker-->
+                        <Path Fill="{StaticResource redRadial}"
+                              Stroke="{StaticResource controlOutline}"
+                              StrokeLineJoin="Round">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathFigure StartPoint="12 5"
+                                                IsClosed="True">
+                                        <LineSegment Point="0,6" />
+                                        <PolyLineSegment Points="0 14,12 15,17 20" />
+                                        <ArcSegment Point="17,0"
+                                                    Size="30,30" />
+                                    </PathFigure>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                        <!--hightlight-->
+                        <Path Fill="{StaticResource glossBrush}">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathFigure StartPoint="13,6"
+                                                IsClosed="True">
+                                        <PolyLineSegment Points="1,7 1,11 17.5,11" />
+                                        <ArcSegment Point="16.5,2"
+                                                    Size="30,30"/>
+                                    </PathFigure>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                        <!--sound waves-->
+                        <Polygon Points="20,5 25,0 27,3"
+                                 Fill="{StaticResource textBrush}" />
+                        <Polygon Points="20,10 28,9 27,6"
+                                 Fill="{StaticResource textBrush}" />
+                        <Polygon Points="20,13 26,17 27,13"
+                                 Fill="{StaticResource textBrush}" />
+                        <Polygon Points="20,17 24,21 26,18"
+                                 Fill="{StaticResource textBrush}" />
+                    </Canvas>
+                </ToggleButton>
+            </Grid>
+            <Slider Grid.Column="2"
+                    VerticalAlignment="Center"
+                    Margin="0 0 10 0"
                     Minimum="0"
                     Maximum="1"
-                    Value="{Binding ElementName=mediaElement, Path=Volume}" />
+                    Value="{Binding ElementName=mediaElement, Path=Volume}"/>
         </Grid>
         <Slider x:Name="progressSlider"
                DockPanel.Dock="Bottom"
@@ -36,10 +116,33 @@
                LargeChange="1000"
                PreviewMouseLeftButtonDown="progressSlider_PreviewMouseLeftButtonDown"
                PreviewMouseLeftButtonUp="progressSlider_PreviewMouseLeftButtonUp" />
-        <MediaElement x:Name="mediaElement"
-                      DockPanel.Dock="Top"
-                      LoadedBehavior="Manual"
-                      MediaOpened="mediaElement_MediaOpened"
-                      MediaEnded="mediaElement_MediaEnded" />
+        <Grid DockPanel.Dock="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <MediaElement x:Name="mediaElement"
+                          VerticalAlignment="Bottom"
+                          LoadedBehavior="Manual"
+                          MediaOpened="mediaElement_MediaOpened"
+                          MediaEnded="mediaElement_MediaEnded" />
+            <Rectangle x:Name="reflection"
+           Grid.Row="1"
+           Width="{Binding Path=ActualWidth, ElementName=mediaElement}"
+           MinHeight="24">
+                <Rectangle.Fill>
+                    <VisualBrush Visual="{Binding ElementName=mediaElement}" />
+                </Rectangle.Fill>
+                <Rectangle.OpacityMask>
+                    <LinearGradientBrush EndPoint="0.5,0.5"
+                                         StartPoint="0.5,0">
+                        <GradientStop Color="#72000000"
+                                      Offset="0" />
+                        <GradientStop Color="#00ffffff"
+                                      Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Grid>
     </DockPanel>
 </UserControl>

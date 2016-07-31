@@ -1,0 +1,102 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="yellowColor" A="255" R="255" G="176" B="59" />
+    <Color x:Key="orangeColor" A="255" R="182" G="73" B="38" />
+    <Color x:Key="redColor" A="255" R="142" G="40" B="0" />
+    <Color x:Key="textColor" A="255" R="255" G="255" B="255" />
+    <Color x:Key="bgColor" A="255" R="0" G="0" B="0" />
+    <Color x:Key="paleColor" A="255" R="255" G="240" B="165" />
+    <SolidColorBrush x:Key="yellowBrush" Color="{StaticResource yellowColor}"/>
+    <SolidColorBrush x:Key="orangeBrush" Color="{StaticResource orangeColor}"/>
+    <SolidColorBrush x:Key="redBrush" Color="{StaticResource redColor}" />
+    <SolidColorBrush x:Key="textBrush" Color="{StaticResource textColor}"/>
+    <SolidColorBrush x:Key="bgBrush" Color="{StaticResource bgColor}" />
+    <SolidColorBrush x:Key="paleBrush" Color="{StaticResource paleColor}"/>
+    <SolidColorBrush x:Key="glossOutline" Color="#99FFFFFF" />
+    <SolidColorBrush x:Key="chromeOutline" Color="#FF808080"/>
+    <SolidColorBrush x:Key="controlOutline" Color="#FF333333" />
+    <LinearGradientBrush x:Key="yellowGradient"
+                         StartPoint="0.5,0"
+                         EndPoint="0.5,1">
+        <GradientStop Color="{StaticResource yellowColor}"
+                      Offset="0.4"/>
+        <GradientStop Color="#FFFFF0A5"
+                      Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="glossBrush"
+                         StartPoint="0.5,0"
+                         EndPoint="0.5,1">
+        <GradientStop Color="#00FFFFFF"
+                      Offset="0" />
+        <GradientStop Color="#66FFFFFF"
+                      Offset="1" />
+    </LinearGradientBrush>
+    <RadialGradientBrush x:Key="redRadial"
+                         GradientOrigin="0.45,0.30">
+        <GradientStop Color="{StaticResource orangeColor}"
+                      Offset="0" />
+        <GradientStop Color="{StaticResource redColor}"
+                      Offset="1" />
+    </RadialGradientBrush>
+    <LinearGradientBrush x:Key="chromeBrush"
+                         StartPoint="0.73,-0.053"
+                         EndPoint="0.341,0.967"
+                         SpreadMethod="Repeat">
+        <GradientStop Color="#FF727272"
+                      Offset="0.54" />
+        <GradientStop Color="#FFFFFFFF"
+                      Offset="1" />
+        <GradientStop Color="#FFFFFFFF"
+                      Offset="0" />
+        <GradientStop Color="#FFDADADA"
+                      Offset="0.46" />
+        <GradientStop Color="#FFFFFFFF"
+                      Offset="0.37" />
+        <GradientStop Color="#FFB7B7B7"
+                      Offset="0.30" />
+        <GradientStop Color="#FFEEEEEE"
+                      Offset="0.82" />
+        <GradientStop Color="#FF858585"
+                      Offset="0.90" />
+        <GradientStop Color="#FFFFFFF2"
+                      Offset="0.61" />
+    </LinearGradientBrush>
+    <DrawingBrush x:Key="MediaControlPanelBackground"
+                  Stretch="UniformToFill">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="{StaticResource chromeBrush}">
+                    <GeometryDrawing.Pen>
+                        <Pen Brush="{StaticResource chromeOutline}"
+                             Thickness="0.5" />
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry RadiusX="25"
+                                           RadiusY="25"
+                                           Rect="0 0 400 50" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource yellowGradient}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry RadiusX="23"
+                                           RadiusY="23"
+                                           Rect="2 2 396 46" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource glossBrush}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry RadiusX="10"
+                                           RadiusY="10"
+                                           Rect="10 6 380 20" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    <ImageBrush x:Key="imageBrush"
+                ImageSource="1.jpg" />
+    <ImageBrush x:Key="brush_2"
+                ImageSource="2.jpg" />
+    <ImageBrush x:Key="brush_3"
+                ImageSource="3.jpg" />
+</ResourceDictionary>

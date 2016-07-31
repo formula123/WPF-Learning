@@ -18,13 +18,16 @@
         <Button Content="Video"
                 Grid.ColumnSpan="2"
                 Name="Video"
-                Click="Video_Click" />
+                Click="Video_Click" 
+                Background="{StaticResource imageBrush}"/>
         <Button Content="Music"
                 Grid.Row="1"
-                Click="Music_Click" />
+                Click="Music_Click" 
+                Background="{StaticResource brush_2}"/>
         <Button Content="Pictures"
                 Grid.Row="1"
                 Grid.Column="1"
-                Click="Pictures_Click" />
+                Click="Pictures_Click"
+                Background="{StaticResource brush_3}"/>
     </Grid>
 </UserControl>
