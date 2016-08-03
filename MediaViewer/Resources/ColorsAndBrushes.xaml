@@ -31,13 +31,17 @@
         <GradientStop Color="#66FFFFFF"
                       Offset="1" />
     </LinearGradientBrush>
-    <RadialGradientBrush x:Key="redRadial"
-                         GradientOrigin="0.45,0.30">
-        <GradientStop Color="{StaticResource orangeColor}"
-                      Offset="0" />
-        <GradientStop Color="{StaticResource redColor}"
-                      Offset="1" />
-    </RadialGradientBrush>
+<RadialGradientBrush x:Key="redRadial"
+                     GradientOrigin="0.45,0.30">
+    <RadialGradientBrush.RelativeTransform>
+    <TranslateTransform X="-0.2"
+                        Y="-0.2" />
+    </RadialGradientBrush.RelativeTransform>
+    <GradientStop Color="{StaticResource orangeColor}"
+                  Offset="0" />
+            <GradientStop Color="{StaticResource redColor}"
+                  Offset="1" />
+</RadialGradientBrush>
     <LinearGradientBrush x:Key="chromeBrush"
                          StartPoint="0.73,-0.053"
                          EndPoint="0.341,0.967"

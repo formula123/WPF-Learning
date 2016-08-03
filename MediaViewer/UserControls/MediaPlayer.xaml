@@ -127,11 +127,18 @@
                           MediaOpened="mediaElement_MediaOpened"
                           MediaEnded="mediaElement_MediaEnded" />
             <Rectangle x:Name="reflection"
-           Grid.Row="1"
-           Width="{Binding Path=ActualWidth, ElementName=mediaElement}"
-           MinHeight="24">
+                       Grid.Row="1"
+                       Width="{Binding Path=ActualWidth, ElementName=mediaElement}"
+                       MinHeight="24">
                 <Rectangle.Fill>
-                    <VisualBrush Visual="{Binding ElementName=mediaElement}" />
+                    <VisualBrush Visual="{Binding ElementName=mediaElement}">
+                        <VisualBrush.Transform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="-1" />
+                                <TranslateTransform Y="{Binding Path=ActualHeight,ElementName=reflection}" />
+                            </TransformGroup>
+                        </VisualBrush.Transform>
+                    </VisualBrush>
                 </Rectangle.Fill>
                 <Rectangle.OpacityMask>
                     <LinearGradientBrush EndPoint="0.5,0.5"
