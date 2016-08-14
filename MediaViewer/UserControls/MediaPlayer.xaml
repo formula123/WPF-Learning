@@ -22,7 +22,7 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Button
+                <Button Style="{StaticResource mediaButtonStyle}"
                         Click="Stop_Click">
                     <Border Width="18"
                             Height="20"
@@ -41,12 +41,23 @@
                     </Border>
                 </Button>
                 <Button Grid.Column="1"
-                        Click="Play_Click">
+                        Click="Play_Click"
+                        Style="{StaticResource fancyButtonStyle}">
                     <Grid Margin="4 0 0 0">
                         <Polygon Fill="{StaticResource yellowGradient }"
                                  Stroke="{StaticResource chromeOutline}"
-                                 Points="0,0 18, 10 0, 18" />
-                        <Canvas Visibility="Hidden">
+                                 Points="0,0 18, 10 0, 18">
+                            <Polygon.Style>
+                                <Style TargetType="{x:Type Polygon}">
+                                    <Style.Triggers>
+                                        <Trigger Property="DataContext" Value="Playing">
+                                            <Setter Property="Visibility" Value="Hidden" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Polygon.Style>
+                        </Polygon>
+                        <Canvas>
                             <Rectangle Height="18"
                                        Fill="{StaticResource yellowGradient}"
                                        Stroke="{StaticResource chromeOutline}"
@@ -56,12 +67,24 @@
                                        Stroke="{StaticResource chromeOutline}"
                                        Width="6"
                                        Canvas.Left="8" />
+                            <Canvas.Style>
+                                <Style TargetType="{x:Type Canvas}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                    <Style.Triggers>
+                                        <Trigger Property="DataContext" Value="Playing">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Canvas.Style>
                         </Canvas>
                     </Grid>
                 </Button>
                 <ToggleButton Grid.Column="2"
+                              Style="{StaticResource mediaButtonStyle}"
                               IsChecked="{Binding ElementName=mediaElement,Path=IsMuted}">
-                    <Canvas Width="20" Height="20">
+                    <Grid>
+                        <Canvas Width="20" Height="20">
                         <!--speaker-->
                         <Path Fill="{StaticResource redRadial}"
                               Stroke="{StaticResource controlOutline}"
@@ -101,6 +124,38 @@
                         <Polygon Points="20,17 24,21 26,18"
                                  Fill="{StaticResource textBrush}" />
                     </Canvas>
+                        <!--Off symbol-->
+                        <Canvas>
+                            <Canvas.Style>
+                                <Style TargetType="{x:Type Canvas}">
+                                    <Setter Property="Visibility"
+                                            Value="Hidden" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=IsMuted, ElementName=mediaElement}"
+                                                     Value="True">
+                                            <Setter Property="Visibility"
+                                                    Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Canvas.Style>
+                            <Ellipse Width="20"
+                                     Height="20"
+                                     Stroke="{DynamicResource bgBrush}"
+                                     Canvas.Left="0"
+                                     Canvas.Top="0"
+                                     StrokeThickness="3" />
+                            <Path Width="13.498"
+                                  Height="16.446"
+                                  Fill="{x:Null}"
+                                  Stretch="Fill"
+                                  Stroke="{DynamicResource bgBrush}"
+                                  StrokeThickness="3"
+                                  Canvas.Left="3.442"
+                                  Canvas.Top="1.319"
+                                  Data="M4.9424596,16.265143 L15.440304,2.8191997" />
+                        </Canvas>
+                    </Grid>
                 </ToggleButton>
             </Grid>
             <Slider Grid.Column="2"

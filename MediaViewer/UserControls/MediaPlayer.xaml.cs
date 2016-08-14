@@ -66,6 +66,7 @@ namespace MediaViewer.UserControls
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             mediaElement.Clock = null;
+            DataContext = "Paused";
         }
 
         private void Play_Click(object sender, RoutedEventArgs e)
@@ -74,9 +75,15 @@ namespace MediaViewer.UserControls
             if(clock != null)
             {
                 if (clock.IsPaused)
+                {
                     clock.Controller.Resume();
+                    DataContext = "Playing";
+                }
                 else
+                {
                     clock.Controller.Pause();
+                    DataContext = "Paused";
+                }
             }
             else
             {
@@ -85,6 +92,7 @@ namespace MediaViewer.UserControls
                 clock = timeline.CreateClock();
                 clock.CurrentTimeInvalidated += Clock_CurrentTimeInvalidated;
                 mediaElement.Clock = clock;
+                DataContext = "Playing";
             }
         }
 

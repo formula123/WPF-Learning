@@ -111,12 +111,13 @@
                     CornerRadius="4"
                     Background="Gray"
                     Opacity=".5" />
-            <Border BorderBrush="{StaticResource redBrush}"
+            <Border BorderBrush="Transparent"
                     BorderThickness="2"
                     CornerRadius="4"
                     Margin="0 0 2 2"
                     Padding="3"
-                    Style="{StaticResource listBorder}">
+                    x:Name="border_z"
+                    >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -141,9 +142,24 @@
                     <TextBlock Grid.Row="2"
                                Grid.Column="1"
                                Text="{Binding PrimaryEmail}" />
-                </Grid>
-            </Border>
+                    </Grid>
+                </Border>
             <Button Style="{StaticResource openButton}" />
         </Grid>
+        <DataTemplate.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Organization}"
+                               Value="SUDA" />
+                    <Condition Binding="{Binding Address.State}"
+                               Value="SuZhou" />
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter TargetName="border_z"
+                            Property="BorderBrush"
+                            Value="Orange" />
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
+        </DataTemplate.Triggers>
     </DataTemplate>
 </ResourceDictionary>
