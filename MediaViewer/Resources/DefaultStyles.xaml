@@ -33,9 +33,6 @@
                             <Setter TargetName="hightlight"
                                     Property="Visibility"
                                     Value="Visible" />
-                            <Setter TargetName="hightlight"
-                                            Property="Background"
-                                            Value="Red" />
                         </Trigger>
                         <Trigger Property="IsPressed"
                                  Value="True">
@@ -91,7 +88,7 @@
                         <EventTrigger RoutedEvent="UIElement.MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard Storyboard.TargetName="chromeEdge"
-                                            Storyboard.TargetProperty="RenderTransform.Angle">
+                                            Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)">
                                     <DoubleAnimation To="90"
                                                      Duration="0:0:0.10" />
                                 </Storyboard>
@@ -100,7 +97,7 @@
                         <EventTrigger RoutedEvent="UIElement.MouseLeave">
                             <BeginStoryboard>
                                 <Storyboard Storyboard.TargetName="chromeEdge"
-                                            Storyboard.TargetProperty="RenderTransform.Angle">
+                                            Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)">
                                     <DoubleAnimation To="0"
                                                      Duration="0:0:0.10" />
                                 </Storyboard>

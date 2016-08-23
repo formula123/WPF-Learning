@@ -6,13 +6,47 @@
         xmlns:local="clr-namespace:LearningAnimation"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <PathGeometry x:Key="path" Figures="M50,10 C100,10 0,90 50,100 C100,90 0,10 50,10 z" />
+    </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard>
                 <Storyboard Storyboard.TargetName="Ball"
                             Storyboard.TargetProperty="(Canvas.Left)">
                     <DoubleAnimation By="300"
-                                     Duration="0:0:07.5" />
+                                     Duration="0:0:05"
+                                     AccelerationRatio="0.4"
+                                     DecelerationRatio="0.4"
+                                     RepeatBehavior="2x"/>
+                </Storyboard>
+            </BeginStoryboard>
+            <BeginStoryboard>
+                <Storyboard Storyboard.TargetName="Ball_1">
+                    <DoubleAnimationUsingKeyFrames
+                        Storyboard.TargetProperty="(Canvas.Left)">
+                        <LinearDoubleKeyFrame Value="50" KeyTime="0:0:2" />
+                        <LinearDoubleKeyFrame Value="50" KeyTime="0:0:4" />
+                        <LinearDoubleKeyFrame Value="0" KeyTime="0:0:6" />
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Top)"
+                                                   BeginTime="0:0:2">
+                        <LinearDoubleKeyFrame Value="100" KeyTime="0:0:2" />
+                        <LinearDoubleKeyFrame Value="100" KeyTime="0:0:4" />
+                        <LinearDoubleKeyFrame Value="50" KeyTime="0:0:6" />
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+            <BeginStoryboard>
+                <Storyboard Storyboard.TargetName="Ball_2">
+                    <DoubleAnimationUsingPath Duration="0:0:10"
+                                              Storyboard.TargetProperty="(Canvas.Left)"
+                                              Source="X"
+                                              PathGeometry="{StaticResource path}" />
+                        <DoubleAnimationUsingPath Duration="0:0:10"
+                                                  Storyboard.TargetProperty="(Canvas.Top)"
+                                                  Source="Y"
+                                                  PathGeometry="{StaticResource path}" />
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
@@ -23,7 +57,23 @@
                  Fill="Red"
                  Canvas.Top="50"
                  Canvas.Left="0">
-            
         </Ellipse>
+        <Ellipse x:Name="Ball_1"
+                 Width="20" Height="20"
+                 Fill="Green"
+                 Canvas.Top="200"
+                 Canvas.Left="80">
+        </Ellipse>
+        <Ellipse x:Name="Ball_2"
+                 Width="20" Height="20"
+                 Fill="Blue"
+                 Canvas.Top="0"
+                 Canvas.Left="0">
+            <Ellipse.RenderTransform>
+                <TranslateTransform X="-10" Y="-10" />
+            </Ellipse.RenderTransform>
+        </Ellipse>
+        <Path Stroke="Red" StrokeThickness="2" Data="{StaticResource path}">
+        </Path>
     </Canvas>
 </Window>

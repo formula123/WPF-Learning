@@ -41,6 +41,25 @@
                                 <TextBlock Text="{Binding Name}" />
                             </StackPanel>
                         </Image.ToolTip>
+                        <Image.Triggers>
+                            <EventTrigger RoutedEvent="Image.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation By="25" Duration="0:0:0.25"
+                                                         Storyboard.TargetProperty="Width" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Image.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation To="{TemplateBinding Width}"
+                                                         Duration="0:0:0.25"
+                                                         Storyboard.TargetProperty="Width" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Image.Triggers>
                     </Image>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
