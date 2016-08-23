@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace LearningAnimation
 {
@@ -23,6 +24,21 @@ namespace LearningAnimation
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void createBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var animation = new ColorAnimation(Colors.Red,Colors.Black, TimeSpan.FromSeconds(5));
+            DoubleAnimation widthAnimation =
+                new DoubleAnimation(120, 300, TimeSpan.FromSeconds(5));
+            widthAnimation.RepeatBehavior = RepeatBehavior.Forever;
+            widthAnimation.AutoReverse = true;
+            var clock = widthAnimation.CreateClock();
+            var button = new Button();
+            btnPanel.Children.Add(button);
+            //button.BeginAnimation(Button.WidthProperty, widthAnimation);
+            //button.BeginAnimation(Button.BackgroundProperty, animation);
+            button.ApplyAnimationClock(Button.WidthProperty, clock);
         }
     }
 }

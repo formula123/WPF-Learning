@@ -11,7 +11,7 @@
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
-            <BeginStoryboard>
+            <BeginStoryboard x:Name="BallStoryboard">
                 <Storyboard Storyboard.TargetName="Ball"
                             Storyboard.TargetProperty="(Canvas.Left)">
                     <DoubleAnimation By="300"
@@ -43,37 +43,52 @@
                                               Storyboard.TargetProperty="(Canvas.Left)"
                                               Source="X"
                                               PathGeometry="{StaticResource path}" />
-                        <DoubleAnimationUsingPath Duration="0:0:10"
+                    <DoubleAnimationUsingPath Duration="0:0:10"
                                                   Storyboard.TargetProperty="(Canvas.Top)"
                                                   Source="Y"
                                                   PathGeometry="{StaticResource path}" />
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
+        <EventTrigger RoutedEvent="Button.Click"
+                      SourceName="Pause">
+            <PauseStoryboard BeginStoryboardName="BallStoryboard" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Button.Click"
+                      SourceName="Resume">
+            <ResumeStoryboard BeginStoryboardName="BallStoryboard" />
+        </EventTrigger>
     </Window.Triggers>
-    <Canvas>
-        <Ellipse x:Name="Ball"
-                 Width="20" Height="20"
-                 Fill="Red"
-                 Canvas.Top="50"
-                 Canvas.Left="0">
-        </Ellipse>
-        <Ellipse x:Name="Ball_1"
-                 Width="20" Height="20"
-                 Fill="Green"
-                 Canvas.Top="200"
-                 Canvas.Left="80">
-        </Ellipse>
-        <Ellipse x:Name="Ball_2"
-                 Width="20" Height="20"
-                 Fill="Blue"
-                 Canvas.Top="0"
-                 Canvas.Left="0">
-            <Ellipse.RenderTransform>
-                <TranslateTransform X="-10" Y="-10" />
-            </Ellipse.RenderTransform>
-        </Ellipse>
-        <Path Stroke="Red" StrokeThickness="2" Data="{StaticResource path}">
-        </Path>
-    </Canvas>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" x:Name="btnPanel">
+            <Button x:Name="Pause">Pause</Button>
+            <Button x:Name="Resume">Resume</Button>
+            <Button x:Name="createBtn" Click="createBtn_Click">create</Button>
+        </StackPanel>
+        <Canvas>
+            <Ellipse x:Name="Ball"
+                     Width="20" Height="20"
+                     Fill="Red"
+                     Canvas.Top="50"
+                     Canvas.Left="0">
+            </Ellipse>
+            <Ellipse x:Name="Ball_1"
+                     Width="20" Height="20"
+                     Fill="Green"
+                     Canvas.Top="200"
+                     Canvas.Left="80">
+            </Ellipse>
+            <Ellipse x:Name="Ball_2"
+                     Width="20" Height="20"
+                     Fill="Blue"
+                     Canvas.Top="0"
+                     Canvas.Left="0">
+                <Ellipse.RenderTransform>
+                    <TranslateTransform X="-10" Y="-10" />
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Path Stroke="Red" StrokeThickness="2" Data="{StaticResource path}">
+            </Path>
+        </Canvas>
+    </StackPanel>
 </Window>

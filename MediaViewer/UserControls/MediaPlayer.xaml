@@ -5,6 +5,44 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              >
+    <UserControl.Resources>
+        <Storyboard x:Key="tipStoryboard"
+                    Storyboard.TargetName="tipBox" >
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)">
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00"
+                                        Value="115"/>
+                <DiscreteDoubleKeyFrame KeyTime="00:00:02"
+                                        Value="150"/>
+                <DiscreteDoubleKeyFrame KeyTime="00:00:04"
+                                        Value="185"/>
+                <DiscreteDoubleKeyFrame KeyTime="00:00:06"
+                                        Value="280"/>
+            </DoubleAnimationUsingKeyFrames>
+            <StringAnimationUsingKeyFrames Storyboard.TargetProperty="Tag">
+                <DiscreteStringKeyFrame KeyTime="00:00:00"
+                                        Value="Stops media when playing."/>
+                <DiscreteStringKeyFrame KeyTime="00:00:02"
+                                        Value="Plays media, or pauses currently playing media." />
+                    <DiscreteStringKeyFrame KeyTime="00:00:04"
+                                            Value="Toggles mute." />
+                    <DiscreteStringKeyFrame KeyTime="00:00:06"
+                                            Value="Controls the volume." />
+            </StringAnimationUsingKeyFrames>
+            <ParallelTimeline Storyboard.TargetProperty="Opacity">
+                <DoubleAnimation BeginTime="00:00:00"
+                                 To="1"/>
+                <DoubleAnimation BeginTime="00:00:08"
+                                 To="0"/>
+            </ParallelTimeline>
+            <ParallelTimeline Storyboard.TargetName="progressSlider"
+                              Storyboard.TargetProperty="Opacity">
+                <DoubleAnimation BeginTime="00:00:00"
+                                 To="0"/>
+                <DoubleAnimation BeginTime="00:00:08"
+                                 To="1"/>
+            </ParallelTimeline>
+        </Storyboard>
+    </UserControl.Resources>
     <DockPanel>
         <Grid DockPanel.Dock="Bottom"
               HorizontalAlignment="Center"
@@ -15,6 +53,38 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+            <Canvas VerticalAlignment="Top"
+                    Margin="0 6 0 0">
+                <StackPanel x:Name="tipBox"
+                            Canvas.Bottom="0"
+                            Opacity="0">
+                    <Border CornerRadius="4"
+SnapsToDevicePixels="True"
+Width="100"
+Padding="4"
+Background="{StaticResource paleBrush}"
+BorderBrush="{StaticResource orangeBrush}"
+BorderThickness="1">
+                        <TextBlock TextWrapping="Wrap"
+TextAlignment="Center"
+Text="{Binding ElementName=tipBox,
+Path=Tag}" />
+                    </Border>
+                    <Path Margin="0 -1 0 0"
+SnapsToDevicePixels="True"
+Stroke="{StaticResource orangeBrush}"
+Fill="{StaticResource paleBrush}"
+Data="M40,0 L50,10 60,0" />
+                </StackPanel>
+            </Canvas>
+            <Button Style="{StaticResource mediaButtonStyle}"
+Content="Help">
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.Click">
+                        <BeginStoryboard Storyboard="{StaticResource tipStoryboard}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
             <Grid Grid.Column="1"
                   HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
