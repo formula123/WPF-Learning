@@ -7,93 +7,117 @@
         <Setter Property="FontSize" Value="20" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Foreground" Value="{StaticResource textBrush}" />
-        <Setter Property="BitmapEffect">
-            <Setter.Value>
-                <OuterGlowBitmapEffect GlowColor="{StaticResource textColor}"
-                                       Opacity="0.2" />
-            </Setter.Value>
-        </Setter>
     </Style>
-    <Style x:Key="fancyButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Margin" Value="4" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid HorizontalAlignment="Center"
-                              VerticalAlignment="Center">
-                        <Ellipse x:Name="chromeEdge"
-                                     Margin="-2"
-                                     Width="36" Height="36"
-                                     Fill="{StaticResource chromeBrush}"
-                                     Stroke="{StaticResource chromeOutline}"
-                                     StrokeThickness="0.5">
-                        </Ellipse>
-                        <Ellipse x:Name="bg"
-                                     Width="32" Height="32"
-                                     Stroke="{StaticResource redBrush}"
-                                     Fill="{StaticResource redRadial}"/>
-                        <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center" />
-                        <Rectangle x:Name="gloss"
-                                       Margin="3.5"
-                                       Width="25" Height="16"
-                                       RadiusX="20" RadiusY="10"
-                                       Fill="{StaticResource glossBrush}"
-                                       VerticalAlignment="Top"/>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style x:Key="mediaButtonStyle" TargetType="{x:Type ButtonBase}">
+    <Style x:Key="mediaButtonStyle"
+           TargetType="{x:Type ButtonBase}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ButtonBase}">
-                    <Grid Width="32" Height="32"
-                          Background="Transparent" >
+                    <Grid Width="32"
+                          Height="32"
+                          Background="Transparent">
                         <ContentPresenter VerticalAlignment="Center"
                                           HorizontalAlignment="Center" />
                         <Border x:Name="hightlight"
+                                Visibility="Hidden"
                                 CornerRadius="3"
-                                Background="{StaticResource  mediaButtonHover}"
+                                Background="Transparent"
                                 BorderBrush="{StaticResource glossOutline}"
                                 BorderThickness="1">
                             
                         </Border>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter TargetName="hightlight"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                            <Setter TargetName="hightlight"
+                                            Property="Background"
+                                            Value="Red" />
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter TargetName="hightlight"
+                                    Property="Opacity"
+                                    Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="{x:Type Slider}">
+    <Style x:Key="fancyButtonStyle"
+           TargetType="{x:Type Button}">
+        <Setter Property="Margin"
+                Value="4" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Slider}">
-                    <Grid x:Name="root">
-                        <Border Height="4"
-                                CornerRadius="2"
-                                Background="{StaticResource sliderBg}">
-                        </Border>
-                        <Track x:Name="PART_Track">
-                            <Track.Thumb>
-                                <Thumb />
-                            </Track.Thumb>
-                        </Track>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Grid HorizontalAlignment="Center"
+                          VerticalAlignment="Center">
+                        <Ellipse x:Name="chromeEdge"
+                                 Margin="2"
+                                 Width="36"
+                                 Height="36"
+                                 Fill="{StaticResource chromeBrush}"
+                                 Stroke="{StaticResource chromeOutline}"
+                                 StrokeThickness="0.5"
+                                 RenderTransformOrigin="0.5,0.5">
+                            <Ellipse.RenderTransform>
+                                <RotateTransform />
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                        <Ellipse x:Name="bg"
+                                 Width="32"
+                                 Height="32"
+                                 Stroke="{StaticResource redBrush}"
+                                 Fill="{StaticResource redRadial}" />
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                        <Rectangle x:Name="gloss"
+                                   Margin="3.5"
+                                   Width="25"
+                                   Height="16"
+                                   Stroke="{StaticResource bgBrush}"
+                                   StrokeThickness="0"
+                                   RadiusX="20"
+                                   RadiusY="10"
+                                   Fill="{StaticResource glossBrush}"
+                                   VerticalAlignment="Top" />
                     </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style TargetType="{x:Type Thumb}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Grid Width="16" Height="16">
-                        <Ellipse Fill="{StaticResource redRadial}"
-                                 Stroke="{StaticResource controlOutline}" />
-                        <Ellipse Fill="{StaticResource glossBrush}"
-                                 Margin="2,2,2,4" />
-                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard Storyboard.TargetName="chromeEdge"
+                                            Storyboard.TargetProperty="RenderTransform.Angle">
+                                    <DoubleAnimation To="90"
+                                                     Duration="0:0:0.10" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard Storyboard.TargetName="chromeEdge"
+                                            Storyboard.TargetProperty="RenderTransform.Angle">
+                                    <DoubleAnimation To="0"
+                                                     Duration="0:0:0.10" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter Property="RenderTransform"
+                                    TargetName="chromeEdge">
+                                <Setter.Value>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="90" />
+                                    </TransformGroup>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

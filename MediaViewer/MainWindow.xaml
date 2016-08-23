@@ -8,8 +8,9 @@
         <StackPanel DockPanel.Dock="Top"
                     Orientation="Horizontal"
                     Margin="0 0 0 8">
-            <Button Style="{StaticResource fancyButtonStyle}"
-                    Click="Header_Click">
+            <Button Background="{StaticResource redBrush}"
+                    Click="Header_Click"
+                    Style="{StaticResource fancyButtonStyle}">
                 <Polygon Fill="{StaticResource yellowBrush}"
                          Points="0,10 11,0 22,10 18,10 18,20 4,20 4,10" />
             </Button>
