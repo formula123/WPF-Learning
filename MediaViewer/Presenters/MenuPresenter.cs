@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using MediaViewer.Views;
 using System.Windows.Controls;
 using MediaViewer.Model;

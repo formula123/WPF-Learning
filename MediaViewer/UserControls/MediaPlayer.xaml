@@ -22,8 +22,8 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Button
-                        Click="Stop_Click">
+                <Button Click="Stop_Click"
+                        Style="{StaticResource mediaButtonStyle}">
                     <Border Width="18"
                             Height="20"
                             Background="{StaticResource redRadial}"
@@ -41,7 +41,8 @@
                     </Border>
                 </Button>
                 <Button Grid.Column="1"
-                        Click="Play_Click">
+                        Click="Play_Click"
+                        Style="{StaticResource fancyButtonStyle}">
                     <Grid Margin="4 0 0 0">
                         <Polygon Fill="{StaticResource yellowGradient }"
                                  Stroke="{StaticResource chromeOutline}"
@@ -60,6 +61,7 @@
                     </Grid>
                 </Button>
                 <ToggleButton Grid.Column="2"
+                              Style="{StaticResource mediaButtonStyle}"
                               IsChecked="{Binding ElementName=mediaElement,Path=IsMuted}">
                     <Canvas Width="20" Height="20">
                         <!--speaker-->

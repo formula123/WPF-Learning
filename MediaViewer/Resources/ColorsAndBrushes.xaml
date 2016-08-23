@@ -31,17 +31,17 @@
         <GradientStop Color="#66FFFFFF"
                       Offset="1" />
     </LinearGradientBrush>
-<RadialGradientBrush x:Key="redRadial"
-                     GradientOrigin="0.45,0.30">
-    <RadialGradientBrush.RelativeTransform>
-    <TranslateTransform X="-0.2"
-                        Y="-0.2" />
-    </RadialGradientBrush.RelativeTransform>
-    <GradientStop Color="{StaticResource orangeColor}"
-                  Offset="0" />
-            <GradientStop Color="{StaticResource redColor}"
-                  Offset="1" />
-</RadialGradientBrush>
+    <RadialGradientBrush x:Key="redRadial"
+                         GradientOrigin="0.45,0.30">
+        <RadialGradientBrush.RelativeTransform>
+        <TranslateTransform X="-0.2"
+                            Y="-0.2" />
+        </RadialGradientBrush.RelativeTransform>
+        <GradientStop Color="{StaticResource orangeColor}"
+                      Offset="0" />
+                <GradientStop Color="{StaticResource redColor}"
+                      Offset="1" />
+    </RadialGradientBrush>
     <LinearGradientBrush x:Key="chromeBrush"
                          StartPoint="0.73,-0.053"
                          EndPoint="0.341,0.967"
@@ -103,4 +103,18 @@
                 ImageSource="2.jpg" />
     <ImageBrush x:Key="brush_3"
                 ImageSource="3.jpg" />
+    <LinearGradientBrush x:Key="mediaButtonHover"
+                         StartPoint="0.5,0"
+                         EndPoint="0.5,1" >
+        <GradientStop Color="#C0FFFFFF" Offset="0"/>
+        <GradientStop Color="#00FFFFFF" Offset="0.33"/>
+        <GradientStop Color="#00FFFFFF" Offset="0.66"/>
+        <GradientStop Color="#C0FFFFFF" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="sliderBg"
+                         StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Color="{StaticResource redColor}" Offset="0"/>
+        <GradientStop Color="{StaticResource orangeColor}" Offset="0.5"/>
+        <GradientStop Color="{StaticResource redColor}" Offset="1"/>
+    </LinearGradientBrush>
 </ResourceDictionary>
