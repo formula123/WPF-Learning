@@ -1,0 +1,43 @@
+﻿<Window x:Class="DataBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBinding"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:DataConverter x:Key="converter" />
+    </Window.Resources>
+    <DockPanel LastChildFill="True">
+        <Button Background="Red" DockPanel.Dock="Bottom">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Blue" />
+                            <Setter Property="Height" Value="50"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            Click
+         </Button>
+        <StackPanel DockPanel.Dock="Top" Orientation="Vertical"
+                    MinWidth="100">
+            <StackPanel.Style>
+                <Style TargetType="StackPanel" >
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Orientation"
+                                    Value="Horizontal"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Style>
+            <TextBox x:Name="tbx" Text="{Binding ElementName=sld, Path=Value,Converter={StaticResource converter}}" />
+            <Slider x:Name="sld" Maximum="100" Minimum="0" />
+        </StackPanel>
+    </DockPanel>
+</Window>
